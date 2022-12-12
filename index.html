@@ -20,8 +20,25 @@
         <p id="time">00:00:00</p>
     </div>
     <script>
-
-
+    "use strict";
+    const time = document.querySelector('#time');
+    const hourHand = document.querySelector('#hour');
+    const minuteHand = document.querySelector('#minute');
+    const secondHand = document.querySelector('#second');
+    
+    const addZero = (num) => {
+        num = num < 10 ? `0${num}` : num;
+        return num;
+    }
+    const clock = () => {
+        const now = new Date();
+        let hour = now.getHours() % 12;//時
+        let min = now.getMinutes();//分
+        let sec = now.getSeconds();//秒
+        time.innerHTML = `${addZero(hour)}:${addZero(min)}:${addZero(sec)}`;
+        requestAnimationFrame(clock);
+    }
+    clock();
     </script>
 </body>
 
