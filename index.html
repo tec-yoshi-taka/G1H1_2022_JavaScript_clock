@@ -35,6 +35,12 @@
         let hour = now.getHours() % 12;//時
         let min = now.getMinutes();//分
         let sec = now.getSeconds();//秒
+        let millsec = now.getMilliseconds();//ミリ秒
+
+        hourHand.style.transform = `rotate(${(hour + min/60)*30}deg)`;
+        minuteHand.style.transform = `rotate(${(min + sec/60)*6}deg)`;
+        secondHand.style.transform = `rotate(${(sec+millsec/1000)*6}deg)`;
+
         time.innerHTML = `${addZero(hour)}:${addZero(min)}:${addZero(sec)}`;
         requestAnimationFrame(clock);
     }
